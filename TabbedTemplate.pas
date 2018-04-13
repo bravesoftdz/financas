@@ -7,7 +7,8 @@ uses
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.TabControl,
   FMX.StdCtrls, FMX.Gestures, FMX.Controls.Presentation, FMX.Edit, FMX.EditBox,
   FMX.NumberBox, FMX.Layouts, FMX.ScrollBox, FMX.Memo, FMX.Objects,
-  System.Actions, FMX.ActnList, FMX.MaterialSources, FMX.Colors;
+  System.Actions, FMX.ActnList, FMX.MaterialSources, FMX.Colors, UniProvider,
+  MySQLUniProvider, Data.DB, MemDS, DBAccess, Uni;
 
 type
   TTabbedForm = class(TForm)
@@ -35,15 +36,23 @@ type
     tab_teste: TTabItem;
     bt_teste: TButton;
     ColorBox1: TColorBox;
+    Label4: TLabel;
+    Edit3: TEdit;
+    UniConnection1: TUniConnection;
+    UniQuery1: TUniQuery;
+    MySQLUniProvider1: TMySQLUniProvider;
     procedure FormCreate(Sender: TObject);
     procedure FormGesture(Sender: TObject; const EventInfo: TGestureEventInfo;
       var Handled: Boolean);
     procedure SpeedButton4Click(Sender: TObject);
     procedure bt_testeClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+
   private
     { Private declarations }
   public
-    { Public declarations }
+    function aspas(Texto: String): string;
+    procedure Coneccao(Sender: TUniQuery; Text: String);
   end;
 
 var
@@ -53,10 +62,24 @@ implementation
 
 {$R *.fmx}
 {$R *.LgXhdpiPh.fmx ANDROID}
+function TTabbedForm.aspas(Texto:string) :string;
+var
+resultado: String;
+begin
+  resultado := chr(39)+Texto+char(39);
+end;
+
+procedure TTabbedForm.Coneccao(Sender: TUniQuery; Text: String);
+begin
+  Sender.Close;
+  Sender.SQL.Clear;
+  Sender.SQL.Text := Text;
+  Sender.Open;
+end;
 
 procedure TTabbedForm.bt_testeClick(Sender: TObject);
 begin
-tab_teste.Visible:= false;
+  tab_teste.Visible:= false;
 end;
 
 procedure TTabbedForm.FormCreate(Sender: TObject);
@@ -87,10 +110,19 @@ begin
 {$ENDIF}
 end;
 
+procedure TTabbedForm.SpeedButton1Click(Sender: TObject);
+var
+conta : integer;
+begin
+   UniConnection1.Connected := true;
+   coneccao(UniQuery1,'select valor from saldo where id = 1 ');
+
+end;
+
 procedure TTabbedForm.SpeedButton4Click(Sender: TObject);
 begin
-tab_teste.Visible := true;
-TabControl1.ActiveTab:=tab_teste;
+  tab_teste.Visible := true;
+  TabControl1.ActiveTab:=tab_teste;
 end;
 
 end.

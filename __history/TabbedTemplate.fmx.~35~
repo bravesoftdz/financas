@@ -3,7 +3,7 @@ object TabbedForm: TTabbedForm
   Top = 0
   Caption = 'TabbedForm'
   ClientHeight = 567
-  ClientWidth = 356
+  ClientWidth = 367
   StyleBook = StyleBook1
   FormFactor.Width = 1440
   FormFactor.Height = 900
@@ -12,14 +12,14 @@ object TabbedForm: TTabbedForm
   DesignerMasterStyle = 3
   object HeaderToolBar: TToolBar
     Anchors = []
-    Size.Width = 356.000000000000000000
+    Size.Width = 367.000000000000000000
     Size.Height = 48.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object ToolBarLabel: TLabel
       Align = Contents
       StyledSettings = [Style, FontColor]
-      Size.Width = 356.000000000000000000
+      Size.Width = 367.000000000000000000
       Size.Height = 48.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'toollabel'
@@ -410,15 +410,15 @@ object TabbedForm: TTabbedForm
   end
   object ColorBox1: TColorBox
     Align = Client
-    Color = claLightsteelblue
-    Size.Width = 356.000000000000000000
+    Color = claWhite
+    Size.Width = 367.000000000000000000
     Size.Height = 519.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 3
     object TabControl1: TTabControl
       Align = Client
       FullSize = True
-      Size.Width = 356.000000000000000000
+      Size.Width = 367.000000000000000000
       Size.Height = 519.000000000000000000
       Size.PlatformDefault = False
       TabHeight = 49.000000000000000000
@@ -426,13 +426,13 @@ object TabbedForm: TTabbedForm
       TabOrder = 0
       TabPosition = PlatformDefault
       Sizes = (
-        356s
+        367s
         470s
-        356s
+        367s
         470s
-        356s
+        367s
         470s
-        356s
+        367s
         470s
         356s
         470s)
@@ -441,7 +441,7 @@ object TabbedForm: TTabbedForm
           item
           end>
         IsSelected = False
-        Size.Width = 71.000000000000000000
+        Size.Width = 91.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'tabitemstyle'
@@ -455,7 +455,7 @@ object TabbedForm: TTabbedForm
           item
           end>
         IsSelected = True
-        Size.Width = 71.000000000000000000
+        Size.Width = 91.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'tabitemcontacts'
@@ -474,7 +474,7 @@ object TabbedForm: TTabbedForm
             Touch.InteractiveGestures = [LongTap, DoubleTap]
             TabOrder = 1
             KeyboardType = NumberPad
-            Position.X = 152.000000000000000000
+            Position.X = 136.000000000000000000
             Position.Y = 23.000000000000000000
             Size.Width = 161.000000000000000000
             Size.Height = 32.000000000000000000
@@ -482,13 +482,14 @@ object TabbedForm: TTabbedForm
           end
           object Label1: TLabel
             StyledSettings = [Family, Style, FontColor]
-            Position.X = 8.000000000000000000
             Position.Y = 32.000000000000000000
             Size.Width = 145.000000000000000000
             Size.Height = 33.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 16.000000000000000000
             Text = 'Dinheiro Recebido :'
+            ParentShowHint = False
+            ShowHint = False
           end
           object SpeedButton1: TSpeedButton
             Cursor = crHandPoint
@@ -510,7 +511,7 @@ object TabbedForm: TTabbedForm
               Touch.InteractiveGestures = [LongTap, DoubleTap]
               TabOrder = 0
               KeyboardType = NumberPad
-              Position.X = 128.000000000000000000
+              Position.X = 112.000000000000000000
               Position.Y = 23.000000000000000000
               Size.Width = 185.000000000000000000
               Size.Height = 32.000000000000000000
@@ -518,6 +519,7 @@ object TabbedForm: TTabbedForm
             end
             object Label3: TLabel
               StyledSettings = [Family, Style, FontColor]
+              Position.X = -8.000000000000000000
               Position.Y = 32.000000000000000000
               Size.Width = 121.000000000000000000
               Size.Height = 33.000000000000000000
@@ -537,18 +539,20 @@ object TabbedForm: TTabbedForm
           end
         end
         object Label2: TLabel
-          StyledSettings = [Family, Style, FontColor]
-          Position.X = 24.000000000000000000
-          Position.Y = 8.000000000000000000
+          StyledSettings = [Family, FontColor]
+          Position.X = 8.000000000000000000
+          Position.Y = 24.000000000000000000
           Size.Width = 257.000000000000000000
           Size.Height = 40.000000000000000000
           Size.PlatformDefault = False
           TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
           Text = 'Seu saldo atual '#233' :'
         end
         object SpeedButton3: TSpeedButton
-          Position.X = 288.000000000000000000
-          Position.Y = 7.000000000000000000
+          StyledSettings = [Family, Size, FontColor]
+          Position.X = 272.000000000000000000
+          Position.Y = 15.000000000000000000
           Size.Width = 48.000000000000000000
           Size.Height = 48.000000000000000000
           Size.PlatformDefault = False
@@ -561,7 +565,7 @@ object TabbedForm: TTabbedForm
           item
           end>
         IsSelected = False
-        Size.Width = 71.000000000000000000
+        Size.Width = 91.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'tabitemrecent'
@@ -575,7 +579,7 @@ object TabbedForm: TTabbedForm
           item
           end>
         IsSelected = False
-        Size.Width = 71.000000000000000000
+        Size.Width = 94.000000000000000000
         Size.Height = 49.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = 'tabitemmostrecent'
@@ -589,12 +593,13 @@ object TabbedForm: TTabbedForm
           item
           end>
         IsSelected = False
-        Size.Width = 72.000000000000000000
-        Size.Height = 49.000000000000000000
+        Size.Width = 8.000000000000000000
+        Size.Height = 8.000000000000000000
         Size.PlatformDefault = False
         StyleLookup = ''
         TabOrder = 0
         Text = 'teste'
+        Visible = False
         object bt_teste: TButton
           Position.X = 128.000000000000000000
           Position.Y = 183.000000000000000000

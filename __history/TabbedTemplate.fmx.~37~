@@ -546,6 +546,7 @@ object TabbedForm: TTabbedForm
               Size.PlatformDefault = False
               TextSettings.Font.Size = 16.000000000000000000
               Text = 'Descri'#231#227'o :'
+              OnClick = Label4Click
             end
             object Edit3: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
