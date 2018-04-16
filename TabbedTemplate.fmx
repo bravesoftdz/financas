@@ -145,6 +145,7 @@ object TabbedForm: TTabbedForm
             Size.PlatformDefault = False
             StyleLookup = 'cornerbuttonstyle'
             Text = 'Salvar'
+            OnClick = SpeedButton2Click
           end
         end
       end
