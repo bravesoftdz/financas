@@ -79,7 +79,7 @@ UniConnection1.Connected := true;
     else
     if Operacao=2 then
     begin
-      calculo := Sender.FieldByName('valor').Value - StrToInt(Ed_recebido.Text);
+      calculo := Sender.FieldByName('valor').Value - StrToInt(Edit2.Text);
     end;
     Sender.Close ;
     Sender.SQL.Clear;

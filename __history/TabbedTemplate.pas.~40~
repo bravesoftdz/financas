@@ -38,10 +38,13 @@ type
       var Handled: Boolean);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    procedure operacao(Sender: TUniQuery; Text: String; Operacao: Integer);
+    function aspas(Texto : String) : String;
   end;
 
 var
@@ -51,6 +54,58 @@ implementation
 
 {$R *.fmx}
 {$R *.LgXhdpiPh.fmx ANDROID}
+
+function TTabbedForm.aspas(Texto: String): String;
+begin
+  result := chr(39)+ Texto + chr (39);
+end;
+
+procedure TTabbedForm.operacao(Sender: TUniQuery; Text: String; Operacao: Integer);
+var
+calculo: integer;
+sinal: string;
+begin
+UniConnection1.Connected := true;
+  Sender.Close ;
+  Sender.SQL.Clear;
+  Sender.SQL.Text := Text;
+  Sender.Open;
+  if Operacao<>0 then
+  begin
+    if Operacao=1 then
+    begin
+      calculo := Sender.FieldByName('valor').Value + StrToInt(Ed_recebido.Text);
+    end
+    else
+    if Operacao=2 then
+    begin
+      calculo := Sender.FieldByName('valor').Value - StrToInt(Ed_recebido.Text);
+    end;
+    Sender.Close ;
+    Sender.SQL.Clear;
+    Sender.SQL.Text := 'update saldo set valor = :calculo where id =1';
+    Sender.ParamByName('calculo').AsInteger := calculo;
+    Sender.ExecSQL;
+    ShowMessage('Saldo Atualizado');
+    Label4.Text := IntToStr(calculo);
+    Ed_recebido.Text := '';
+    Edit2.Text := '';
+  end
+  else
+  begin
+    Label4.Text := Sender.FieldByName('valor').Value;
+  end;
+
+
+UniConnection1.Connected := false;
+end;
+
+{procedure TTabbedForm.Button1Click(Sender: TObject);
+begin
+UniConnection1.Connect;
+abrir(UniQuery1,'select * from Cliente where nome like '+aspas(Edit1.Text + '%') );
+ShowMessage(UniQuery1.RecordCount.ToString);
+end;}
 
 procedure TTabbedForm.FormCreate(Sender: TObject);
 begin
@@ -82,25 +137,17 @@ end;
 
 procedure TTabbedForm.SpeedButton1Click(Sender: TObject);
 begin
-UniConnection1.Connect:=true;
-UniQuery1.SQL.Clear;
-UniQuery1.SQL.Text := 'insert into saldo (valor) values (:valor)';
-UniQuery1.ParamByName('valor').AsInteger := Ed_recebido;
-UniQuery1.Open;
-UniConnection1.Connected:=false;
-ShowMessage('Saldo Salvo com Sucesso !!!');
+  operacao(UniQuery1,'select valor from saldo where id = 1',1);
+end;
+
+procedure TTabbedForm.SpeedButton2Click(Sender: TObject);
+begin
+   operacao(UniQuery1,'select valor from saldo where id = 1',2);
 end;
 
 procedure TTabbedForm.SpeedButton3Click(Sender: TObject);
 begin
-UniConnection1.Connected := true;
-UniQuery1.SQL.Clear;
-UniQuery1.SQL.text:='select valor from saldo';
-UniQuery1.Open;
-Label4.Text := UniQuery1.FieldByName('valor').Value;
-UniQuery1.Close;
-UniConnection1.Connected:=false;
-
+  operacao(UniQuery1,'select valor from saldo where id = 1',0);
 
 end;
 
